@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 
 public class Post {
     protected LocalDateTime dataCreació;
-    protected Persona autor;
+    protected String autor;
     protected boolean majorEdat;
     protected String titol,contingut;
 
@@ -19,13 +19,6 @@ public class Post {
         this.dataCreació = dataCreació;
     }
 
-    public Persona getAutor() {
-        return autor;
-    }
-
-    public void setAutor(Persona autor) {
-        this.autor = autor;
-    }
 
     public boolean isMajorEdat() {
         return majorEdat;
@@ -49,5 +42,21 @@ public class Post {
 
     public void setContingut(String contingut) {
         this.contingut = contingut;
+    }
+
+    public Post(LocalDateTime dataCreació, String string, boolean majorEdat, String titol, String contingut) {
+        this.dataCreació = dataCreació;
+        this.autor = string;
+        this.majorEdat = majorEdat;
+        this.titol = titol;
+        this.contingut = contingut;
+    }
+
+    public String getAutor() {
+        return autor;
+    }
+
+    public void setAutor(String autor) {
+        this.autor = autor;
     }
 }

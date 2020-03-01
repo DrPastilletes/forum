@@ -8,6 +8,8 @@ import java.util.ArrayList;
 public abstract class Persona{
     protected String nomUsuari, password;
     protected int edat;
+    /*TIPUS USUARI: 0-Admin 1-Lector 2-Editor*/
+    protected int tipus;
     SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
     protected LocalDate dataNaix;
     protected ArrayList<Persona> editorFollow = new ArrayList<>();
@@ -87,6 +89,14 @@ public abstract class Persona{
     public Persona(String nomUsuari, String password) {
         this.nomUsuari = nomUsuari;
         this.password = password;
+    }
+
+    public int getTipus() {
+        return tipus;
+    }
+
+    public void setTipus(int tipus) {
+        this.tipus = tipus;
     }
     
 }
