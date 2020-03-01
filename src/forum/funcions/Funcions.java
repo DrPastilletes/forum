@@ -227,6 +227,9 @@ public class Funcions{
                             escriurePosts(post);
                         }
                     } 
+                    else{
+                        System.out.println("Post per majors d'edat!!");
+                    }
                 }
             }
         }

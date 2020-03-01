@@ -62,7 +62,7 @@ public class Post {
 
     @Override
     public String toString() {
-        return "Autor=" + autor +"\n"+"contingut=" + contingut +"\n"+ "Data de creació=" + dataCreació +"\n"+ "+18?="
-                + majorEdat +"\n"+ "Titol=" + titol + "";
+        return"Data de creació=" + dataCreació+"\n"+ "Autor=" + autor +"\n"+ "Titol=" + titol +"\n"+"Contingut=" + contingut +"\n"+ "+18?="
+                + majorEdat + "";
     }
 }

@@ -147,7 +147,13 @@ public class forum{
                         iguals = Funcions.comprovarNomUsuari(nomUsuari, usuaris);
                     }
                     String password = Funcions.entrarPassword();
-                    Lector lec = new Lector(nomUsuari, password, 1, new ArrayList<Persona>());
+                    System.out.println("Quina dia vas neixer?");
+                    int dia = Integer.parseInt(sc.nextLine());
+                    System.out.println("Quin mes vas neixer?");
+                    int mes = Integer.parseInt(sc.nextLine());
+                    System.out.println("Quin any vas neixer?");
+                    int any = Integer.parseInt(sc.nextLine());
+                    Lector lec = new Lector(nomUsuari, password, 1, LocalDate.of(any, mes, dia),new ArrayList<Persona>());
                     usuaris.add(lec);
                     System.out.println("Usuari Lector creat correctament!");
                     break;

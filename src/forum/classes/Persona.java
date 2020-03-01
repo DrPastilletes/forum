@@ -111,5 +111,13 @@ public abstract class Persona{
         this.tipus = tipus;
         this.editorFollow = editorFollow;
     }
+
+    public Persona(String nomUsuari, String password, int tipus, LocalDate dataNaix, ArrayList<Persona> editorFollow) {
+        this.nomUsuari = nomUsuari;
+        this.password = password;
+        this.tipus = tipus;
+        this.dataNaix = dataNaix;
+        this.editorFollow = editorFollow;
+    }
     
 }
