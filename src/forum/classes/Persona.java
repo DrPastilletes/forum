@@ -98,5 +98,18 @@ public abstract class Persona{
     public void setTipus(int tipus) {
         this.tipus = tipus;
     }
+
+    public void mostrarEditorsSeguits(){
+        for (Persona persona : editorFollow) {
+            System.out.println(persona.getNomUsuari()); 
+        }
+    }
+
+    public Persona(String nomUsuari, String password, int tipus, ArrayList<Persona> editorFollow) {
+        this.nomUsuari = nomUsuari;
+        this.password = password;
+        this.tipus = tipus;
+        this.editorFollow = editorFollow;
+    }
     
 }

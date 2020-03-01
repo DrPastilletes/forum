@@ -140,6 +140,7 @@ public class Funcions{
         mostrarPosts(posts);
         System.out.println("Quin post vols borrar?");
         int accio = Integer.parseInt(sc.nextLine());
+        accio -= 1;
         posts.remove(accio);
         System.out.println("Eliminat correctament!");
         mostrarPosts(posts);
@@ -164,5 +165,81 @@ public class Funcions{
                 System.out.println(persona.getNomUsuari());
             }
         }
+    }
+
+    public static boolean comprovarNomUsuari(String nomUsu, ArrayList<Persona> usuaris){
+        boolean iguals = false;
+        for (Persona persona : usuaris) {
+            if(persona.getNomUsuari().equals(nomUsu)){
+                iguals = true;
+                System.out.println("Usuari ja existent prova amb un altre nom!");
+            }
+        }
+        return iguals;
+    }
+
+    public static ArrayList<Persona> deLectorAEditor(ArrayList<Persona> usuaris, String nom){
+        int contador = 0;
+        for (Persona persona : usuaris) {
+            if(persona.getNomUsuari().equals(nom)){
+                persona.setTipus(2);
+                contador++;
+            }
+        }
+        if(contador==0){
+            System.out.println("Lector no trobat, Torna-ho a intentar!");
+        }
+        return usuaris;
+    }
+
+    public static ArrayList<Persona> seguirEditor(String usuActual,ArrayList<Persona> usuaris, String nom){
+        for (int i = 0; i < usuaris.size(); i++) {
+            if(usuaris.get(i).getNomUsuari().equals(usuActual)){
+                for (int j = 0; j < usuaris.size(); j++) {
+                    if(usuaris.get(j).getNomUsuari().equals(nom)){
+                        usuaris.get(i).getEditorFollow().add(usuaris.get(j));
+                    }
+                }
+            }
+        }
+        return usuaris;
+    }
+
+    public static void veureEditorsSeguits(String usuActual, ArrayList<Persona> usuaris){
+        System.out.println("Editors seguits per "+usuActual);
+        for (Persona persona : usuaris) {
+            persona.mostrarEditorsSeguits();
+        }
+    }
+
+    public static void veureMur(String usuActual, ArrayList<Persona> usuaris, ArrayList<Post> posts, String usuAdmin) {
+        ArrayList<Persona> editorFollow = new ArrayList<>();
+        for (Persona persona : usuaris) {
+            if(persona.getNomUsuari().equals(usuActual)){
+                editorFollow = persona.getEditorFollow();
+            }
+        }
+        for (Persona persona : usuaris){
+            for (Post post : posts) {
+                if(persona.getNomUsuari().equals(usuActual)){
+                    if(persona.isMajorEdat()==post.isMajorEdat() || !post.isMajorEdat()){
+                        if(post.getAutor().equals(usuAdmin)){
+                            escriurePosts(post);
+                        }
+                    } 
+                }
+            }
+        }
+        for (Persona persona : editorFollow) {
+            for (Post post : posts) {
+              if(post.getAutor().equals(persona.getNomUsuari())){
+                  escriurePosts(post);
+              }  
+            }
+        }
+    }
+
+    public static void escriurePosts(Post post){
+        System.out.println(post.toString());
     }
 }
